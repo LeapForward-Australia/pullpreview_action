@@ -88,6 +88,7 @@ done
 docker-compose <%= locals.compose_files.map{|f| ["-f", f.inspect]}.flatten.join(" ") %> up \
 	--build \
 	--remove-orphans \
+  --force-recreate \
 	-d
 
 sleep 10
