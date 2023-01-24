@@ -46,6 +46,10 @@ inputs:
     description: "Names of private registries to authenticate against. E.g. docker://username:password@ghcr.io"
     required: false
     default: ""
+  teardown:
+    description: "Whether or not to tear down the instance after the action completes"
+    required: false
+    default: false
 
 outputs:
   url:
@@ -81,5 +85,7 @@ runs:
     - "${{ inputs.instance_type }}"
     - "--registries"
     - "${{ inputs.registries }}"
+    - "--teardown"
+    - "${{ inputs.teardown }}"
   env:
     GITHUB_TOKEN: "${{ inputs.github_token }}"

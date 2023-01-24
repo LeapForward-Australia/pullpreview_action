@@ -7,6 +7,7 @@ module PullPreview
     # CLI options, already parsed
     attr_reader :opts
     attr_reader :always_on
+    attr_reader :teardown
 
     LABEL = "pullpreview"
 
@@ -80,6 +81,13 @@ module PullPreview
     def sync!
       if sha != latest_sha && !ENV.fetch("PULLPREVIEW_TEST", nil)
         PullPreview.logger.info "A newer commit is present. Skipping current run."
+        return true
+      end
+
+      # check if this is just a teardown request
+      if teardown
+        PullPreview.logger.info "Teardown requested. Destroying instance..."
+        Down.run(name: instance_name)
         return true
       end
 
