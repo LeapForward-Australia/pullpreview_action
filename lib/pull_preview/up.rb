@@ -80,6 +80,7 @@ module PullPreview
       puts "::set-output name=url::#{instance.url}"
       puts "::set-output name=host::#{instance.public_ip}"
       puts "::set-output name=username::#{instance.username}"
+      puts "::set-output name=instance_name::#{instance.name}"
 
       puts
       puts "You can access your application at the following URL:"

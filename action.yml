@@ -54,6 +54,8 @@ outputs:
     description: "The hostname or IP address of the preview server"
   username:
     description: "The username that can be used to SSH into the preview server"
+  instance_name:
+    description: "The name of the instance deployed to lightsail"
 
 runs:
   using: "docker"

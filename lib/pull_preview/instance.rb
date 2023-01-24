@@ -280,6 +280,10 @@ module PullPreview
       access_details.username
     end
 
+    def instance_name
+      access_details.instance_name
+    end
+
     def public_ip
       access_details.ip_address
     end
