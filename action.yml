@@ -85,7 +85,6 @@ runs:
     - "${{ inputs.instance_type }}"
     - "--registries"
     - "${{ inputs.registries }}"
-    - "--teardown"
-    - "${{ inputs.teardown }}"
+    - "${{ inputs.teardown == 'true' && '--teardown' || '' }}"
   env:
     GITHUB_TOKEN: "${{ inputs.github_token }}"

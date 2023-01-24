@@ -72,7 +72,7 @@ module PullPreview
       @app_path = app_path
       @opts = opts
       @always_on = opts.delete(:always_on)
-      @teardown = opts.delete(:teardown).to_bool
+      @teardown = opts.delete(:teardown)
     end
 
     def octokit

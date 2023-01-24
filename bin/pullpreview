@@ -68,7 +68,7 @@ begin
       common_opts.call(o)
       up_opts.call(o)
       o.array '--always-on', 'List of branches to always deploy', default: []
-      o.string '--teardown', 'Destroy the instance when the PR is closed', default: "false"
+      o.bool '--teardown', 'Destroy the instance when the PR is closed', default: false
     end
 
     app_path = opts.arguments.first
@@ -76,6 +76,9 @@ begin
       puts opts
       exit 1
     end
+
+    PullPreview.logger.info opts[:teardown]
+    PullPreview.logger.info opts.to_hash
 
     PullPreview::GithubSync.run(app_path, opts.to_hash)
   when "console"
