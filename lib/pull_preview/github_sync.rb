@@ -72,6 +72,7 @@ module PullPreview
       @app_path = app_path
       @opts = opts
       @always_on = opts.delete(:always_on)
+      @teardown = opts.delete(:teardown)
     end
 
     def octokit
@@ -85,6 +86,7 @@ module PullPreview
       end
 
       # check if this is just a teardown request
+      PullPreview.logger.warn "Teardown boolean: #{teardown.inspect}"
       if teardown
         PullPreview.logger.info "Teardown requested. Destroying instance..."
         Down.run(name: instance_name)
