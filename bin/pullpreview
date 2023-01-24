@@ -68,7 +68,7 @@ begin
       common_opts.call(o)
       up_opts.call(o)
       o.array '--always-on', 'List of branches to always deploy', default: []
-      o.bool '--teardown', 'Destroy the instance when the PR is closed', default: true
+      o.string '--teardown', 'Destroy the instance when the PR is closed', default: "false"
     end
 
     app_path = opts.arguments.first
