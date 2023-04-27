@@ -37,6 +37,7 @@ module PullPreview
       @registries = opts[:registries] || []
       @dns = opts[:dns]
       @ssh_results = []
+      @backend_env_file = opts[:backend_env_file] || {}
     end
 
     def remote_app_path
@@ -132,6 +133,7 @@ module PullPreview
         public_dns: public_dns,
         admins: admins,
         url: url,
+        backend_env_file: backend_env_file,
       )
     end
 
@@ -295,6 +297,10 @@ module PullPreview
         [subdomain[0..remaining_chars_for_subdomain], "ip", public_ip.gsub(".", "-")].join("-"),
         dns
       ].join(".")
+    end
+
+    def backend_env_file
+      @backend_env_file
     end
 
     def url

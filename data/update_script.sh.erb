@@ -46,6 +46,7 @@ else
   PULLPREVIEW_FIRST_RUN=true
 fi
 
+echo 'BACKEND_ENV_FILE="<%= locals.backend_env_file %>"' >> $PULLPREVIEW_ENV_FILE
 echo 'PULLPREVIEW_PUBLIC_DNS=<%= locals.public_dns %>' >> $PULLPREVIEW_ENV_FILE
 echo 'PULLPREVIEW_PUBLIC_IP=<%= locals.public_ip %>' >> $PULLPREVIEW_ENV_FILE
 echo 'PULLPREVIEW_URL=<%= locals.url %>' >> $PULLPREVIEW_ENV_FILE

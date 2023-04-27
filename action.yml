@@ -50,6 +50,10 @@ inputs:
     description: "Whether or not to tear down the instance after the action completes"
     required: false
     default: false
+  backend_env_file:
+    description: "A string representing what you want in the .env file of your backend."
+    required: false
+    default: ""
 
 outputs:
   url:
@@ -86,5 +90,8 @@ runs:
     - "--registries"
     - "${{ inputs.registries }}"
     - "${{ inputs.teardown == 'true' && '--teardown' || '' }}"
+    - "--backend-env-file"
+    - "${{ inputs.backend_env_file }}"
   env:
     GITHUB_TOKEN: "${{ inputs.github_token }}"
+
