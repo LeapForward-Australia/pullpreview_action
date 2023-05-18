@@ -160,6 +160,10 @@ module PullPreview
         end
       end
 
+      if pr_has_label?(LABEL)
+        return :pr_push
+      end
+
       :ignored
     end
 
