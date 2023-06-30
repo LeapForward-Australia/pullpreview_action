@@ -39,16 +39,8 @@ module PullPreview
             blueprint.is_active &&
             blueprint.type == "os"
         end.blueprint_id
-
-        bundle_id = PullPreview.lightsail.get_bundles.bundles.find do |bundle|
-          if opts[:instance_type].nil? || opts[:instance_type].empty?
-            bundle.cpu_count >= 1 &&
-              (2..3).include?(bundle.ram_size_in_gb) &&
-              bundle.supported_platforms.include?("LINUX_UNIX")
-          else
-            bundle.bundle_id == opts[:instance_type]
-          end
-        end.bundle_id
+        
+        bundle_id = "medium_2_0"
 
         instance.launch(azs.first, bundle_id, blueprint_id, tags)
         instance.wait_until_running!
